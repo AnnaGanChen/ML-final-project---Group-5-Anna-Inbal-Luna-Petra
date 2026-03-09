@@ -3,7 +3,7 @@ Machine learning analysis of resting-state EEG to investigate cognitive impairme
 
 The corresponding Jupyter Notebook (.ipynb) files are provided here. The project's final report and full description are submitted as a seperate PDF file. Additional explanations and comments can also be found within the notebooks themselves.
 
-**Research Question: **
+**Research Question:**
 Do resting-state EEG-derived spectral features contain meaningful information related to cognitive function and Parkinson’s disease status, and how are these relationships structured?
 
 This project evaluates both:
