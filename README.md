@@ -52,6 +52,39 @@ The dataset is available via the attached link. It can be downloaded as a ZIP fi
 
 Dataset link: https://openneuro.org/datasets/ds004584/versions/1.0.0
 
+## Project structure:
+```
+.
+├── utils.py                 # Central helper functions, data loading and feature construction
+├── unsupervised.ipynb       # Hierarchical clustering and TAR biomarker discovery
+├── supervised.ipynb         # Traditional ML (RF, SVM) for cognitive staging
+├── CNN.ipynb                # Deep learning approach for raw EEG classification
+└── README.md                # Project documentation and setup guide
+```
+
+## Data Configuration (Google Drive)
+The notebooks are designed to work with the OpenNeuro ds004584 dataset structure. To run the analysis, ensure your Google Drive folder (referenced as RUTA in the notebooks) is organized as follows:
+
+```
+/content/drive/MyDrive/ds004584/
+├── participants_clin_cog.csv    # Clinical labels and demographic data
+├── utils.py                    # Copy of utils for local imports
+├── sub-001/                    # Individual subject folders
+│   └── eeg/
+│       └── sub-001_task-Rest_eeg.set
+│       └── sub-001_task-Rest_eeg.fdt
+│       └── sub-001_task-Rest_events.tsv
+│       └── sub-001_task-Rest_channels.tsv
+│       └── sub-001_task-Rest_coordsystem.json
+│       └── sub-001_task-Rest_eeg.json
+│       └── sub-001_task-Rest_electrodes.tsv
+
+├── sub-002/
+│   └── eeg/
+│       
+└── ...                         # Remaining subject folders
+```
+
 ## Citation
 
 Anjum, M. F., Dasgupta, S., Mudumbai, R., Singh, A., Cavanagh, J. F., & Narayanan, N. S. (2020). Linear predictive coding distinguishes spectral EEG features of Parkinson’s disease. Parkinsonism & Related Disorders, 79, 79–85. https://doi.org/10.1016/j.parkreldis.2020.08.001
