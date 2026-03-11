@@ -55,20 +55,19 @@ Dataset link: https://openneuro.org/datasets/ds004584/versions/1.0.0
 ## Project structure:
 ```
 .
-├── utils.py                 # Central helper functions, data loading and feature construction
-├── unsupervised.ipynb       # Hierarchical clustering and TAR biomarker discovery
-├── supervised.ipynb         # Traditional ML (RF, SVM) for cognitive staging
-├── CNN.ipynb                # Deep learning approach for raw EEG classification
-└── README.md                # Project documentation and setup guide
+├── utils.py                   # Central helper functions, data loading and feature construction
+├── unsupervised.ipynb         # Hierarchical clustering and TAR biomarker discovery
+├── supervised.ipynb           # Traditional ML (RF, SVM) for cognitive staging
+├── CNN.ipynb                  # Deep learning approach for raw EEG classification
+├── participants_clin_cog.csv  # Cognitive scores per participant
+└── README.md                  # Project documentation and setup guide
 ```
 
 ## Data Configuration (Google Drive)
 The notebooks are designed to work with the OpenNeuro ds004584 dataset structure. To run the analysis, ensure your Google Drive folder (referenced as RUTA in the notebooks) is organized as follows:
 
 ```
-/content/drive/MyDrive/ds004584/
-├── participants_clin_cog.csv    # Clinical labels and demographic data
-├── utils.py                    # Copy of utils for local imports
+/content/drive/ds004584/data
 ├── sub-001/                    # Individual subject folders
 │   └── eeg/
 │       └── sub-001_task-Rest_eeg.set
@@ -78,7 +77,6 @@ The notebooks are designed to work with the OpenNeuro ds004584 dataset structure
 │       └── sub-001_task-Rest_coordsystem.json
 │       └── sub-001_task-Rest_eeg.json
 │       └── sub-001_task-Rest_electrodes.tsv
-
 ├── sub-002/
 │   └── eeg/
 │       
