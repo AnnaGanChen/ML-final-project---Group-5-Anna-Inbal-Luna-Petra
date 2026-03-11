@@ -68,6 +68,8 @@ The notebooks are designed to work with the OpenNeuro ds004584 dataset structure
 
 ```
 /content/drive/ds004584/data
+├── participants_clin_cog.csv  # Cognitive scores per participant
+├── utils.py                   # Central helper functions, data loading and feature construction
 ├── sub-001/                    # Individual subject folders
 │   └── eeg/
 │       └── sub-001_task-Rest_eeg.set
