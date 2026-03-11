@@ -51,6 +51,7 @@ The dataset is available via the attached link. It can be downloaded as a ZIP fi
   * NIH Toolbox metrics (participants_clin_cog.csv)
 
 Dataset link: https://openneuro.org/datasets/ds004584/versions/1.0.0
+For easy downloading use the following link that already contains the zipped dataset: https://nemar.org/dataexplorer/detail?dataset_id=ds004584
 
 ## Project structure:
 ```
@@ -64,12 +65,10 @@ Dataset link: https://openneuro.org/datasets/ds004584/versions/1.0.0
 ```
 
 ## Data Configuration (Google Drive)
-The notebooks are designed to work with the OpenNeuro ds004584 dataset structure. To run the analysis, ensure your Google Drive folder (referenced as RUTA in the notebooks) is organized as follows:
+The notebooks are designed to work with the OpenNeuro ds004584 dataset structure. The notebooks automatically download the data zip for their use once they are ran. The zip file structure is as follows:
 
 ```
-/content/drive/ds004584/data
-├── participants_clin_cog.csv  # Cognitive scores per participant
-├── utils.py                   # Central helper functions, data loading and feature construction
+data
 ├── sub-001/                    # Individual subject folders
 │   └── eeg/
 │       └── sub-001_task-Rest_eeg.set
