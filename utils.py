@@ -5,6 +5,12 @@ from mne.time_frequency import psd_array_welch
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import IsolationForest
 from tqdm import tqdm
+import os
+import sys
+import shutil
+import zipfile
+from pathlib import Path
+import requests
 
 # CONFIG
 RANDOM_STATE = 42
@@ -21,6 +27,63 @@ SHAM_BANDS = {
   "beta":(13, 30), # Additoinal band for checking
 }
 SELECTED_CHANNELS = ['P8', 'PO7', 'CP1', 'CP2', 'P6', 'O2', 'P4', 'F4']
+
+# 0. ENVIRONMENT SETUP
+
+def setup_environment():
+    """Set up project paths and download EEG dataset if needed."""
+
+    IN_COLAB = "google.colab" in sys.modules
+
+    if IN_COLAB:
+        from google.colab import drive
+
+        drive.mount("/content/drive", force_remount=True)
+
+        SHARED_FOLDER = Path("/content/drive/MyDrive/ML_RS_EEG")
+        PROJECT_ROOT = Path("/content")
+
+        # Copy required files to runtime
+        for file in ["utils.py", "participants_clin_cog.csv"]:
+            src = SHARED_FOLDER / file
+            dst = PROJECT_ROOT / file
+            if src.exists() and not dst.exists():
+                shutil.copy(src, dst)
+
+    else:
+        PROJECT_ROOT = Path.cwd()
+
+    sys.path.append(str(PROJECT_ROOT))
+
+    # Data paths
+    DATA_ROOT = PROJECT_ROOT / "data" / "ds004584"
+    DATA_ZIP = PROJECT_ROOT / "ds004584.zip"
+
+    DATA_URL = (
+        "https://nemar.org/dataexplorer/download?"
+        "filepath=/data/nemar/openneuro//zip_files/ds004584.zip"
+    )
+
+    (PROJECT_ROOT / "data").mkdir(exist_ok=True)
+
+    if not DATA_ROOT.exists():
+
+        if not DATA_ZIP.exists():
+            print("Downloading EEG dataset...")
+
+            r = requests.get(DATA_URL, stream=True)
+            with open(DATA_ZIP, "wb") as f:
+                for chunk in r.iter_content(chunk_size=8192):
+                    f.write(chunk)
+
+        print("Extracting EEG dataset...")
+
+        with zipfile.ZipFile(DATA_ZIP, "r") as z:
+            z.extractall(PROJECT_ROOT / "data")
+
+    csv_path = PROJECT_ROOT / "participants_clin_cog.csv"
+
+    return PROJECT_ROOT, DATA_ROOT, csv_path
 
 # 1. DATASET DISCOVERY & LABEL ENGINEERING
 
