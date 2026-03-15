@@ -79,7 +79,7 @@ def run_supB():
         drive.mount("/content/drive")  # Mount Drive first
     
         # Path to your project folder in Drive
-        PROJECT_ROOT = Path("/content/drive/MyDrive/ML_RS_EEG")
+        PROJECT_ROOT = Path("/content/drive/MyDrive/ML Final Project Group 5 Machine Learning")
     
         # Make sure Python can find utils.py
         sys.path.append(str(PROJECT_ROOT))
