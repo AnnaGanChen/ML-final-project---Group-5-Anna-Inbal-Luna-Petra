@@ -53,7 +53,7 @@ The dataset is available via the attached link. It can be downloaded as a ZIP fi
 Dataset link: https://openneuro.org/datasets/ds004584/versions/1.0.0
 For easy downloading use the following link that already contains the zipped dataset: https://nemar.org/dataexplorer/detail?dataset_id=ds004584
 
-## Project structure:
+## Project file structure:
 ```
 .
 ├── main.py                    # Central running file
@@ -64,7 +64,7 @@ For easy downloading use the following link that already contains the zipped dat
 ├── supB.py                    # Complementary using same features as unsupervised
 ├── cnn.py                     # Deep learning approach for raw EEG classification
 ├── participants_clin_cog.csv  # Cognitive scores per participant
-├── notebooks/           # optional (for exploration)
+├── notebooks/                 # optional (for exploration)
 │   ├── unsupervised.ipynb
 │   ├── supervised_.ipynb
 │   ├── supB.ipynb
