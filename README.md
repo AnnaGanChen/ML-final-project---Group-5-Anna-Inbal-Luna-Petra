@@ -8,7 +8,7 @@ Do resting-state EEG-derived spectral features contain meaningful information re
 
 This project evaluates both:
 
-* Whether EEG can *predict* diagnosis and cognition
+* Whether EEG can *classify* diagnosis and cognition
 * Whether EEG exhibits *intrinsic latent structure* aligned with clinical phenotypes
   
 ## Project Structure
