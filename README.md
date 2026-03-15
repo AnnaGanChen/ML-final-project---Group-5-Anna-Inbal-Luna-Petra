@@ -56,11 +56,19 @@ For easy downloading use the following link that already contains the zipped dat
 ## Project structure:
 ```
 .
+├── main.py                    # Central running file
 ├── utils.py                   # Central helper functions, data loading and feature construction
-├── unsupervised.ipynb         # Hierarchical clustering and TAR biomarker discovery
-├── supervised.ipynb           # Traditional ML (RF, SVM) for cognitive staging
-├── CNN.ipynb                  # Deep learning approach for raw EEG classification
+├── requirements.txt
+├── unsupervised.py            # Hierarchical clustering and TAR biomarker discovery
+├── supervised_.py             # Traditional ML (RF, SVM) for cognitive staging
+├── supB.py                    # Complementary using same features as unsupervised
+├── cnn.py                     # Deep learning approach for raw EEG classification
 ├── participants_clin_cog.csv  # Cognitive scores per participant
+├── notebooks/           # optional (for exploration)
+│   ├── unsupervised.ipynb
+│   ├── supervised_.ipynb
+│   ├── supB.ipynb
+│   └── cnn.ipynb
 └── README.md                  # Project documentation and setup guide
 ```
 
@@ -83,6 +91,17 @@ data
 │       
 └── ...                         # Remaining subject folders
 ```
+
+## Running the project
+```bash
+git clone https://github.com/AnnaGanChen/ML-final-project---Group-5-Anna-Inbal-Luna-Petra
+cd eeg-ml-project
+
+pip install -r requirements.txt
+
+python main.py
+```
+---
 
 ## Citation
 
