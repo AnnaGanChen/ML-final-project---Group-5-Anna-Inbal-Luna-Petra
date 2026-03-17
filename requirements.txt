@@ -4,7 +4,7 @@ scikit-learn
 matplotlib
 seaborn
 plotly
-umap
+umap-learn
 mne
 gdown
 shap
