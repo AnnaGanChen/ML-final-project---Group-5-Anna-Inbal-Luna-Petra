@@ -1361,9 +1361,9 @@ def run_supervised():
     """
 
     # Load cognition labels from the clinical cognition file
-    COG_PATH = os.path.join(DATA_DIR, "participants_clin_cog.csv")
+    #COG_PATH = os.path.join(DATA_DIR, "participants_clin_cog.csv")
 
-    cog_df = pd.read_csv(COG_PATH)
+    cog_df = pd.read_csv(csv_path)
 
     cognitive_cols = ["NIH FICAT", "NIH DCCST", "NIH PCPST", "NIH PSMT", "NIH PVT"]
     core_tests = ["NIH FICAT", "NIH DCCST", "NIH PCPST"]
