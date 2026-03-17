@@ -95,7 +95,7 @@ data
 ## Running the project
 ```bash
 git clone https://github.com/AnnaGanChen/ML-final-project---Group-5-Anna-Inbal-Luna-Petra
-cd eeg-ml-project
+cd ML-final-project---Group-5-Anna-Inbal-Luna-Petra
 
 pip install -r requirements.txt
 
