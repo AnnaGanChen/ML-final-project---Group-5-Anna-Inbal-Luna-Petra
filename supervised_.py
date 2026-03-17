@@ -1502,8 +1502,8 @@ def run_supervised():
     """### Cognition Visualizations"""
 
     # Requires outputs from the cognition evaluation cell
-    if "binary_prob_series" not in globals():
-        raise RuntimeError("Run the cognition evaluation cell before visualizations.")
+    #if "binary_prob_series" not in globals():
+    #    raise RuntimeError("Run the cognition evaluation cell before visualizations.")
 
     tier_order = ["preserved", "standard", "impaired"]
 
@@ -1563,8 +1563,8 @@ def run_supervised():
     """
 
     # Requires outputs from the cognition evaluation cell
-    if "binary_prob_series" not in globals():
-        raise RuntimeError("Run the cognition evaluation cell before visualizations.")
+    #if "binary_prob_series" not in globals():
+    #    raise RuntimeError("Run the cognition evaluation cell before visualizations.")
 
     tier_order = ["preserved", "standard", "impaired"]
 
