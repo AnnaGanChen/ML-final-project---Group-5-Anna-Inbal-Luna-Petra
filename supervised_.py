@@ -83,7 +83,7 @@ def run_supervised():
         if not os.path.exists(ZIP_PATH):
             gdown.download(FILE_URL, ZIP_PATH, quiet=False, use_cookies=False)
         with zipfile.ZipFile("data.zip", 'r') as zip_ref:
-        zip_ref.extractall("data")
+            zip_ref.extractall("data")
     
     print("Data folder exists:", os.path.exists(DATA_DIR))
     
