@@ -64,11 +64,11 @@ For easy downloading use the following link that already contains the zipped dat
 ├── supB.py                    # Complementary using same features as unsupervised
 ├── cnn.py                     # Deep learning approach for raw EEG classification
 ├── participants_clin_cog.csv  # Cognitive scores per participant
-├── notebooks/                 # optional (for exploration)
-│   ├── unsupervised.ipynb
-│   ├── supervised_.ipynb
-│   ├── supB.ipynb
-│   └── cnn.ipynb
+# optional (for easy & fast viewing + exploration)
+├── unsupervised.ipynb
+├── supervised_.ipynb
+├── supB.ipynb
+└── cnn.ipynb
 └── README.md                  # Project documentation and setup guide
 ```
 
