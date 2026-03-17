@@ -454,7 +454,7 @@ def run_supB():
     ranked_df = nested_results_df.sort_values("Stability_Score", ascending=False).reset_index(drop=True)
     
     print("\n--- Top 5 Most Stable Configurations (Nested CV) ---")
-    display(ranked_df.head(5)[["FeatureFamily", "Model", "ROC_AUC_mean", "ROC_AUC_std", "Stability_Score"]])
+    print(ranked_df.head(5)[["FeatureFamily", "Model", "ROC_AUC_mean", "ROC_AUC_std", "Stability_Score"]])
     
     pivot_stability = ranked_df.pivot(index="FeatureFamily", columns="Model", values="Stability_Score")
     
@@ -567,7 +567,7 @@ def run_supB():
     # Ranking
     ranked_cog_df = nested_results_cog_df.sort_values(by=["Stability_Score"], ascending=[False]).reset_index(drop=True)
     print("\n--- Top 5 Most Stable Configurations (Nested CV) ---")
-    display(ranked_cog_df.head(5)[["FeatureFamily", "Model", "ROC_AUC_mean", "ROC_AUC_std", "Stability_Score"]])
+    print(ranked_cog_df.head(5)[["FeatureFamily", "Model", "ROC_AUC_mean", "ROC_AUC_std", "Stability_Score"]])
     
     # Pivot for Heatmap
     pivot_stability_cog = ranked_cog_df.pivot(index="FeatureFamily", columns="Model", values="Stability_Score")
@@ -718,9 +718,8 @@ def run_supB():
     
     final_summary_table = pd.DataFrame(summary_data)
     
-    # Display formatted for easy copy-pasting into your report
     print("\nCONSOLIDATED SUPERVISED PERFORMANCE")
-    display(final_summary_table)
+    print(final_summary_table)
     
     """### Feature Importances"""
     
@@ -841,11 +840,11 @@ def run_supB():
     
     # Execute
     print(f"\nTABLE: Top 10 Drivers for Diagnosis ({best_pd.FeatureFamily})")
-    display(get_feature_importance_table(best_pd.FeatureFamily, best_pd.Model, X_best_pd, y_pd_task))
+    print(get_feature_importance_table(best_pd.FeatureFamily, best_pd.Model, X_best_pd, y_pd_task))
     print(f"\nTABLE: Top 10 Drivers for Cognition ({best_cog.FeatureFamily})")
-    display(get_feature_importance_table(best_cog.FeatureFamily, best_cog.Model, X_best_cog, y_binary))
+    print(get_feature_importance_table(best_cog.FeatureFamily, best_cog.Model, X_best_cog, y_binary))
     print(f"\nTABLE: Top 10 Drivers for runner up Cognition ({"low_freq"})")
-    display(get_feature_importance_table("low_freq", "LogisticRegression", FEATURES_RAW["low_freq"], y_binary))
+    print(get_feature_importance_table("low_freq", "LogisticRegression", FEATURES_RAW["low_freq"], y_binary))
     
     """## Holdout evaluation"""
     
