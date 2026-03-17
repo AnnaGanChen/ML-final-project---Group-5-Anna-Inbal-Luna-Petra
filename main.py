@@ -1,5 +1,5 @@
 from unsupervised import run_unsupervised
-from _supervised import run_supervised
+from supervised_ import run_supervised
 from supB import run_supB
 from cnn import run_cnn
 
