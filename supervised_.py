@@ -35,6 +35,7 @@ def run_supervised():
     import mne
     import gdown
     import shap
+    import zipfile
     
     from sklearn.model_selection import (
         StratifiedKFold,
@@ -81,7 +82,8 @@ def run_supervised():
     if not os.path.exists(DATA_DIR):
         if not os.path.exists(ZIP_PATH):
             gdown.download(FILE_URL, ZIP_PATH, quiet=False, use_cookies=False)
-        !unzip -q /content/data.zip -d /content/
+        with zipfile.ZipFile("data.zip", 'r') as zip_ref:
+        zip_ref.extractall("data")
     
     print("Data folder exists:", os.path.exists(DATA_DIR))
     
