@@ -1,5 +1,5 @@
-def run_supervised(): 
-    print("Running supervised pipeline...")
+def run_supB(): 
+    print("Running supervised pipeline B...")
     
     """supervised.ipynb
     
@@ -1069,4 +1069,4 @@ def run_supervised():
     
     plot_validity_results(original_auc_cog, label_null_cog, feature_null_cog, "Task 2: Cognitive Impairment")
     
-    print("Supervised analysis complete.")
+    print("Supervised analysis B complete.")
