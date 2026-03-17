@@ -181,7 +181,7 @@ def run_unsupervised():
     participants = utils.get_processed_participants(participants)
     
     print(f"-  CLINICAL LABEL SUMMARY (N={len(participants)})  -")
-    print("\nGroup Breakdown of Tiers (0=Preserved, 1=Standard, 2=Impaired):")
+    print("Group Breakdown of Tiers (0=Preserved, 1=Standard, 2=Impaired):")
     print(participants.groupby('GROUP')['cog_tier'].value_counts().unstack().fillna(0).astype(int))
     
     print()
@@ -190,7 +190,7 @@ def run_unsupervised():
     binary_counts.columns = ['Not_Impaired (0)', 'Impaired (1)']
     print(binary_counts)
     
-    """To establish a biologically grounded ground-truth for cognitive status, participants were categorized using a normative-referenced composite score targeting the executive fuction domain. Recognizing that Inhibitory Control (FICAT), Cognitive Flexibility (DCCST), and Processing Speed (PCPST) exhibited strong inter-correlation ($r = 0.45$ to $0.55$), an Executive Composite was calculated. This was achieved by transforming raw scores into Z-scores based exclusively on the distribution of the Healthy Control cohort ($N=46$). By using the healthy population as the baseline yardstick, we ensured that "Impairment" was defined not by arbitrary clusters, but by significant deviation from neurotypical performance. Specifically, a threshold of $Z < -1.0$ (representing the bottom 15% of healthy performance) was used to define Clinical Impairment (Tier 0), while $Z \ge 0$ identified Preserved function (Tier 2). This rigorous stratification provides a stable clinical anchor for the subsequent unsupervised EEG clustering, allowing us to test whether natural brain-wave patterns respect these established clinical boundaries.
+    """To establish a biologically grounded ground-truth for cognitive status, participants were categorized using a normative-referenced composite score targeting the executive fuction domain. Recognizing that Inhibitory Control (FICAT), Cognitive Flexibility (DCCST), and Processing Speed (PCPST) exhibited strong inter-correlation ($r = 0.45$ to $0.55$), an Executive Composite was calculated. This was achieved by transforming raw scores into Z-scores based exclusively on the distribution of the Healthy Control cohort ($N=46$). By using the healthy population as the baseline yardstick, we ensured that "Impairment" was defined not by arbitrary clusters, but by significant deviation from neurotypical performance. Specifically, a threshold of $Z < -1.0$ (representing the bottom 15% of healthy performance) was used to define Clinical Impairment (Tier 0), while $Z >= 0$ identified Preserved function (Tier 2). This rigorous stratification provides a stable clinical anchor for the subsequent unsupervised EEG clustering, allowing us to test whether natural brain-wave patterns respect these established clinical boundaries.
     
     # 2. CORE PROCESSING UTILITIES + FEATURE CONSTRUCTION
     
@@ -217,9 +217,9 @@ def run_unsupervised():
     
     """Sizes ok:
     
-    low_freq = $(8 \text{ channels} \times 3 \text{ bands}) + 8 \text{ per-channel TARs} + 1 \text{ Global TAR} = \mathbf{33}$
+    low_freq = 33
     
-    sham_band =  $(8 \text{ channels} \times 4 \text{ bands}) $ = 32
+    sham_band = 32
     
     ## Outlier Id
     """
