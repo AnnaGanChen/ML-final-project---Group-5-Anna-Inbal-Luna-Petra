@@ -655,8 +655,8 @@ def run_supervised():
     INNER_SPLITS = 3
     N_BOOTSTRAPS = 1000
 
-    USE_SMOTE = USE_SMOTE if "USE_SMOTE" in globals() else False
-    SMOTE_K_NEIGHBORS = SMOTE_K_NEIGHBORS if "SMOTE_K_NEIGHBORS" in globals() else 5
+    USE_SMOTE = USE_SMOTE #if "USE_SMOTE" in globals() else False
+    SMOTE_K_NEIGHBORS = SMOTE_K_NEIGHBORS #if "SMOTE_K_NEIGHBORS" in globals() else 5
 
     outer_cv = StratifiedKFold(n_splits=OUTER_SPLITS, shuffle=True, random_state=RANDOM_STATE)
     inner_cv = StratifiedKFold(n_splits=INNER_SPLITS, shuffle=True, random_state=RANDOM_STATE)
@@ -1145,8 +1145,8 @@ def run_supervised():
             )[:, 1]
         return scores
 
-    USE_SMOTE = USE_SMOTE if "USE_SMOTE" in globals() else False
-    SMOTE_K_NEIGHBORS = SMOTE_K_NEIGHBORS if "SMOTE_K_NEIGHBORS" in globals() else 5
+    USE_SMOTE = USE_SMOTE #if "USE_SMOTE" in globals() else False
+    SMOTE_K_NEIGHBORS = SMOTE_K_NEIGHBORS #if "SMOTE_K_NEIGHBORS" in globals() else 5
 
 
     def build_vis_pipeline(scaler, model):
@@ -1244,8 +1244,8 @@ def run_supervised():
     CALIBRATE_SVM = True
     CALIBRATION_METHOD = "sigmoid"
     CALIBRATION_CV = 5
-    USE_SMOTE = USE_SMOTE if "USE_SMOTE" in globals() else False
-    SMOTE_K_NEIGHBORS = SMOTE_K_NEIGHBORS if "SMOTE_K_NEIGHBORS" in globals() else 5
+    USE_SMOTE = USE_SMOTE #if "USE_SMOTE" in globals() else False
+    SMOTE_K_NEIGHBORS = SMOTE_K_NEIGHBORS #if "SMOTE_K_NEIGHBORS" in globals() else 5
     TARGET_RECALL = 0.80
 
 
@@ -1632,15 +1632,15 @@ def run_supervised():
 
     # Requires cognition labels and EEG features
     required = ["cog_df", "X_families", "participants", "build_cv_pipeline", "models", "cv"]
-    missing = [name for name in required if name not in globals()]
-    if missing:
-        raise RuntimeError(f"Missing prerequisites: {missing}")
+    #missing = [name for name in required if name not in globals()]
+    #if missing:
+    #    raise RuntimeError(f"Missing prerequisites: {missing}")
 
     # Pick PD feature family (prefer best_row if available)
-    if "best_row" in globals() and "FeatureFamily" in best_row:
+    if 'best_row' in locals() or 'best_row' in globals() and "FeatureFamily" in best_row:
         pd_family = best_row["FeatureFamily"]
         pd_model_name = best_row.get("Model", "RandomForest")
-    elif "best_family" in globals():
+    elif 'best_family' in locals() or 'best_family' in globals():
         pd_family = best_family
         pd_model_name = "RandomForest"
     else:
@@ -1723,15 +1723,15 @@ def run_supervised():
     Purpose: confirm cognition classification is above chance by comparing real AUC to a distribution from shuffled labels (same CV/pipeline).
     """
 
-    required = ["X_cog_families", "y_cog_binary", "cv", "build_cv_pipeline", "models"]
-    missing = [name for name in required if name not in globals()]
-    if missing:
-        raise RuntimeError(f"Missing prerequisites: {missing}")
+    #required = ["X_cog_families", "y_cog_binary", "cv", "build_cv_pipeline", "models"]
+    #missing = [name for name in required if name not in globals()]
+    #if missing:
+    #    raise RuntimeError(f"Missing prerequisites: {missing}")
 
     N_SHUFFLES = 200
     rng = np.random.RandomState(RANDOM_STATE)
 
-    if "cog_results_df" in globals() and len(cog_results_df):
+    if "cog_results_df" in globals() or "cog_results_df" in locals() and len(cog_results_df):
         shuffle_family = cog_results_df.iloc[0]["FeatureFamily"]
     else:
         shuffle_family = list(X_cog_families.keys())[0]
@@ -1785,19 +1785,19 @@ def run_supervised():
     Purpose: confirm PD classification is above chance by comparing real AUC to a shuffled-label distribution (same CV/pipeline).
     """
 
-    required = ["X_families", "cv", "build_cv_pipeline", "models"]
-    missing = [name for name in required if name not in globals()]
-    if missing:
-        raise RuntimeError(f"Missing prerequisites: {missing}")
+    #required = ["X_families", "cv", "build_cv_pipeline", "models"]
+    #missing = [name for name in required if name not in globals()]
+    #if missing:
+    #    raise RuntimeError(f"Missing prerequisites: {missing}")
 
     N_SHUFFLES = 200
     rng = np.random.RandomState(RANDOM_STATE)
 
     # Choose PD feature family/model
-    if "best_row" in globals() and "FeatureFamily" in best_row:
+    if "best_row" in globals() or "best_row" in locals() and "FeatureFamily" in best_row:
         pd_family = best_row["FeatureFamily"]
         pd_model_name = best_row.get("Model", "RandomForest")
-    elif "best_family" in globals():
+    elif "best_family" in globals() or "best_family" in locals():
         pd_family = best_family
         pd_model_name = "RandomForest"
     else:
@@ -1809,7 +1809,7 @@ def run_supervised():
     X_pd = X_families[pd_family]
 
     # PD labels aligned to X_pd
-    if "y" in globals() and len(y) == len(X_pd):
+    if "y" in globals() or "y" in locals() and len(y) == len(X_pd):
         y_pd = np.array(y)
     else:
         participants_idx = participants.set_index("participant_id")
