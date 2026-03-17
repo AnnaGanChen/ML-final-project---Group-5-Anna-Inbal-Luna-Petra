@@ -46,7 +46,6 @@ def run_supB():
     from sklearn.neighbors import NearestNeighbors
     from random import sample
     
-    from IPython.display import Markdown, display
     from imblearn.pipeline import Pipeline as ImbPipeline
     from imblearn.over_sampling import SMOTE
     
