@@ -64,32 +64,59 @@ def run_supervised():
     from scipy.stats import spearmanr
     from sklearn.base import clone
     from scipy.stats import wilcoxon
-    from IPython.display import Markdown, display
     from imblearn.pipeline import Pipeline as ImbPipeline
     from imblearn.over_sampling import SMOTE
     
     warnings.filterwarnings("ignore")
     sns.set(style="whitegrid")
     
-    RANDOM_STATE = 42
     
     """## SECTION 1 - Download & Unzip Dataset"""
+    import sys
+    from pathlib import Path
     
-    DATA_DIR = "/content/data"
-    ZIP_PATH = "/content/data.zip"
-    FILE_URL = "https://drive.google.com/uc?id=1q3GeG15RZqNK9gPDKSWNy3SWYwOu4H6h"
+    # Detect Colab
+    IN_COLAB = "google.colab" in sys.modules
     
-    if not os.path.exists(DATA_DIR):
-        if not os.path.exists(ZIP_PATH):
-            gdown.download(FILE_URL, ZIP_PATH, quiet=False, use_cookies=False)
-        with zipfile.ZipFile("data.zip", 'r') as zip_ref:
-            zip_ref.extractall("data")
+    if IN_COLAB:
+        from google.colab import drive
+        drive.mount("/content/drive")  # Mount Drive first
+    
+        # Path to your project folder in Drive
+        PROJECT_ROOT = Path("/content/drive/MyDrive/ML_RS_EEG")
+    
+        # Make sure Python can find utils.py
+        sys.path.append(str(PROJECT_ROOT))
+    
+    else:
+        # Local machine
+        PROJECT_ROOT = Path.cwd()
+        sys.path.append(str(PROJECT_ROOT))
+    
+    import utils
+    
+    RANDOM_STATE = utils.RANDOM_STATE
+
+    PROJECT_ROOT, DATA_ROOT, csv_path = utils.setup_environment()
+
+    set_files = sorted(DATA_ROOT.glob("sub-*/eeg/*.set"))
+    #
+    #DATA_DIR = "/content/data"
+    DATA_DIR = DATA_ROOT
+    #ZIP_PATH = "/content/data.zip"
+    #FILE_URL = "https://drive.google.com/uc?id=1q3GeG15RZqNK9gPDKSWNy3SWYwOu4H6h"
+    
+    #if not os.path.exists(DATA_DIR):
+    #    if not os.path.exists(ZIP_PATH):
+    #        gdown.download(FILE_URL, ZIP_PATH, quiet=False, use_cookies=False)
+    #    with zipfile.ZipFile("data.zip", 'r') as zip_ref:
+    #        zip_ref.extractall("data")
     
     print("Data folder exists:", os.path.exists(DATA_DIR))
     
     """## SECTION 2 - Data Overview"""
     
-    participants = pd.read_csv(os.path.join(DATA_DIR, "participants.tsv"), sep="\t")
+    participants = pd.read_csv(csv_path)
     participants = participants[["participant_id", "GROUP"]].copy()
     participants["PD_label"] = (participants["GROUP"] == "PD").astype(int)
     
