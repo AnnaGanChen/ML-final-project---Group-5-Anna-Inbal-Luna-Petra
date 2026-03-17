@@ -1051,7 +1051,7 @@ def run_supervised():
     - {clinical_note}
     """
 
-    display(Markdown(interp_text))
+    print(interp_text)
 
     clinical_df
 
