@@ -137,10 +137,8 @@ Anna Gan Chen, Inbal Israeli Gaffa, Luna Gutierrez, Petra Reuwsaat Paul — Neur
 
 ## Citations
 
-**Dataset:**
-Anjum, M. F., Espinoza, A. I., Cole, R. C., Singh, A., May, P., Uc. E. Y., Dasgupta, S., & Narayanan, N. S. (2024). Resting-state EEG measures cognitive impairment in Parkinson's disease. *npj Parkinson's Disease*, 10(1). https://doi.org/10.1038/s41531-023-00602-0
-
-**LEAPD feature methodology:**
 Anjum MF, Dasgupta S, Mudumbai R, et al. Linear predictive coding distinguishes spectral EEG features of Parkinson's disease. Parkinsonism Relat Disord. 2020 Oct;79:79-85. doi: 10.1016/j.parkreldis.2020.08.001. Epub 2020 Aug 23. PMID: 32891924; PMCID: PMC7900258.
+
 Anjum MF, Espinoza AI, Cole RC, et al. Resting-state EEG measures cognitive impairment in Parkinson's disease. NPJ Parkinsons Dis. 2024 Jan 3;10(1):6. doi: 10.1038/s41531-023-00602-0. PMID: 38172519; PMCID: PMC10764756.
+
 Spoa M, Monti S, Bjekić J, Guerra A, et al. Resting-state EEG changes associated with cognitive decline in Parkinson's disease: a systematic review. J Neural Transm (Vienna). 2025 Nov 18. doi: 10.1007/s00702-025-03065-0. Epub ahead of print. PMID: 41251764.
