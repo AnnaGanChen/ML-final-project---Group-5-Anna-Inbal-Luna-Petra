@@ -16,6 +16,9 @@ def run_supB():
     import os
     import numpy as np
     import pandas as pd
+    import matplotlib
+    matplotlib.use('Agg')  # Force the 'Agg' backend (No GUI)
+
     import matplotlib.pyplot as plt
     import seaborn as sns
     import warnings
